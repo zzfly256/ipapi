@@ -23,6 +23,7 @@ function response($info){
 			"ip_segment" => ($info[0] == $info[1]) ? $info[1] : [$info[0],$info[1]]
 		];
 	header('Content-type: application/json');
+	header('Access-Control-Allow-Origin:*');
 	echo json_encode($result);
 }
 
