@@ -1,6 +1,10 @@
 <?php
 error_reporting(0);
-$ip = $_REQUEST['ip'];
+if(!isset($_REQUEST['ip']) || empty($_REQUEST['ip'])){
+	$ip = getip();
+}else{
+	$ip = $_REQUEST['ip'];
+}
 
 $fp = fopen("ip.txt","r");
 
@@ -15,7 +19,7 @@ while (!feof($fp)) {
 function response($info){
 	$result = [
 			"area" => $info[2],
-			"isp" => $info[3],
+			"isp" => strcmp($info[3],"CZ88.NET") == 0 ? "" : $info[3],
 			"ip_segment" => ($info[0] == $info[1]) ? $info[1] : [$info[0],$info[1]]
 		];
 	header('Content-type: application/json');
@@ -37,4 +41,8 @@ function ipcmp($a,$b){
 			return 0;
 		}
 	}
+}
+
+function getip() {
+    return $_SERVER['REMOTE_ADDR'];
 }
