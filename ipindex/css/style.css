@@ -1,0 +1,61 @@
+/*
+IP API
+Author: Rytia
+Link: ip.zzfly.net
+*/
+
+body{
+    background: #50a5d6;
+}
+
+.pure-menu{
+    position:fixed;
+    top:0;
+    background:#50a5d6;
+    z-index: 101;
+}
+
+.content{
+    width: 85%;
+    margin: 0 auto;
+}
+
+.pure-menu {
+    border-bottom: 1px solid #74A8D1;
+    color:#fff;
+}
+.pure-menu-active>.pure-menu-link, .pure-menu-link{
+    color:#fff;
+    font-size: 1.1rem;
+}
+.pure-menu-active>.pure-menu-link, .pure-menu-link:focus, .pure-menu-link:hover{
+    background: #5a93b6;
+}
+
+.pure-menu-disabled, .pure-menu-heading, .pure-menu-link{
+    padding: 1rem 1rem;
+}
+
+#info{
+    text-align: center;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    position:fixed;
+    top:4rem;
+    left:0rem;
+    width:100%;
+    color:#eee;
+}
+
+#info h2{
+    font-weight: 300;
+    font-size: 2.2rem;
+}
+
+#main{
+    background: #f1f1f1;
+    height: 800px;
+    position: relative;
+    top: 21rem;
+    z-index: 99;
+}

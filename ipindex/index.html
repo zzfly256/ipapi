@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ZZFLY IP地址归属地查询 API</title>
+    <link rel="stylesheet" type="text/css" href="css/base-min.css">
+    <link rel="stylesheet" type="text/css" href="css/pure-min.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body>
+
+
+
+    <div class="pure-menu pure-menu-horizontal">
+        <div class="content">
+            <a href="#" class="pure-menu-heading pure-menu-link">IP 归属地查询</a>
+            <ul class="pure-menu-list">
+                <li class="pure-menu-item"><a href="#" class="pure-menu-link">API 说明</a></li>
+                <li class="pure-menu-item"><a href="#" class="pure-menu-link">典型用户</a></li>
+                <li class="pure-menu-item"><a href="#main" class="pure-menu-link">关于</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="info">
+        <h2>您的 IP 是：<span id="ip"></span></h2>
+        <h4>来自：<span id="area"></span> <pre id="isp"></pre> </h4>
+    </div>
+    <div id="main">
+        <br><br><br>
+    </div>
+
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript">
+    $.get("http://ip.x64.men/",function(result){
+        $("#ip").text(result.ip);
+        $("#area").text(result.area);
+        $("#isp").text(result.isp);
+    });
+</script>
+</body>
+</html>
