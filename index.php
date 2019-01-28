@@ -11,13 +11,14 @@ $fp = fopen("ip.txt","r");
 while (!feof($fp)) {
 	fscanf($fp,"%s\t%s\t%s\t%s\t",$info[0],$info[1],$info[2],$info[3]);
 	if(ipcmp($info[0],$ip)<=0 && ipcmp($info[1],$ip)>=0){
-		response($info);
+		response($ip,$info);
 		break;
 	}
 }
 
-function response($info){
+function response($ip,$info){
 	$result = [
+			"ip" => $ip,
 			"area" => $info[2],
 			"isp" => strcmp($info[3],"CZ88.NET") == 0 ? "" : $info[3],
 			"ip_segment" => ($info[0] == $info[1]) ? $info[1] : [$info[0],$info[1]]

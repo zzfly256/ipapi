@@ -3,13 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <title>ZZFLY IP地址归属地查询 API</title>
-    <link rel="stylesheet" type="text/css" href="css/base-min.css">
-    <link rel="stylesheet" type="text/css" href="css/pure-min.css">
-    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="/ipindex/css/base-min.css">
+    <link rel="stylesheet" type="text/css" href="/ipindex/css/pure-min.css">
+    <link rel="stylesheet" type="text/css" href="/ipindex/css/highlight-monokai.css">
+    <link rel="stylesheet" type="text/css" href="/ipindex/css/style.css">
 </head>
 <body>
 
-
+<div id="header">
 
     <div class="pure-menu pure-menu-horizontal">
         <div class="content">
@@ -19,24 +20,53 @@
                 <li class="pure-menu-item"><a href="#" class="pure-menu-link">典型用户</a></li>
                 <li class="pure-menu-item"><a href="#main" class="pure-menu-link">关于</a></li>
             </ul>
+            <form id="search" class="pure-form" v-on:submit.prevent="searchIP()">
+                <input type="text" placeholder="请输入地址并按回车查询" v-model="target">
+            </form>
         </div>
     </div>
 
     <div id="info">
-        <h2>您的 IP 是：<span id="ip"></span></h2>
-        <h4>来自：<span id="area"></span> <pre id="isp"></pre> </h4>
-    </div>
-    <div id="main">
-        <br><br><br>
-    </div>
+        <div v-if="target == ''">
+            <h2>您的 IP 是：{{ ip }}</h2>
+            <h4>
+                来自：{{ area }} {{ isp }}
+            </h4>
+        </div>
+        <div v-if="target != ''">
+            <h2>您查询的 IP 是：{{ ip }}</h2>
+            <h4>
+                来自：{{ area }} {{ isp }}
+            </h4>
+        </div>
 
-<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
-<script type="text/javascript">
-    $.get("http://ip.x64.men/",function(result){
-        $("#ip").text(result.ip);
-        $("#area").text(result.area);
-        $("#isp").text(result.isp);
-    });
-</script>
+    </div>
+</div>
+<div id="main">
+    <div id="docs" class="panel">
+        <h2>API 使用方法</h2>
+        <ul>
+            <li>使用 POST/GET 方式，向 <code>ip.zzfly.net</code> 发起请求</li>
+            <li>所需字段：ip</li>
+            <li>返回结果：
+                <pre><code class="json">{
+    "ip": "119.29.29.29",
+    "area": "广东省深圳市",
+    "isp": "烟台帝思普网络科技有限公司公共DNS服务器(BGP节点)",
+    "ip_segment": "119.29.29.29"
+}</code></pre>
+            </li>
+            <li>调用示例 PHP：
+            <pre><code class="php">&lt;?php var_dump(file_get_contents(json_decode("http://ip.zzfly.net?ip=需要查询的IP")));?&gt;</code></pre></li>
+            <li>调用示例 Shell：
+            <pre><code class="bash">curl -d "ip=需要查询的IP" "http://ip.zzfly.net"</code></pre></li>
+        </ul>
+    </div>
+</div>
+
+<script src="/ipindex/js/vue.js"></script>
+<script src="/ipindex/js/vue-resource.js"></script>
+<script src="/ipindex/js/highlight.pack.js"></script>
+<script src="/ipindex/js/main.js"></script>
 </body>
 </html>

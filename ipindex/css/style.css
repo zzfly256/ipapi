@@ -59,3 +59,35 @@ body{
     top: 21rem;
     z-index: 99;
 }
+
+#search{
+    float: right;
+    padding-top: 0.5rem;
+}
+
+#search input{
+    width: 200px;
+    color:#ccc;
+    transition: 200ms;
+}
+#search input:focus{
+    width: 300px;
+    color: #555555;
+}
+
+.panel{
+    width: 80%;
+    margin: 0 auto;
+    padding: 1rem;
+}
+
+#docs{
+    color:#555555;
+}
+
+pre{
+}
+
+code{
+    color:#50a5d6;
+}
