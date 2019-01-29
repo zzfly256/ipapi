@@ -76,18 +76,48 @@ body{
 }
 
 .panel{
-    width: 80%;
+    padding: 1rem 10% 2rem 10%;
     margin: 0 auto;
-    padding: 1rem;
-}
-
-#docs{
     color:#555555;
 }
 
-pre{
+#docs{
 }
 
 code{
     color:#50a5d6;
+}
+
+#users{
+    background-color: #fff;
+}
+
+.img-border{
+    padding: 0 1rem 0 0;
+}
+
+#users img{
+    border: 1px solid #cccccc;
+    display: block;
+}
+
+#about{
+    text-align: center;
+    background: #f1f1f1;
+}
+
+#footer{
+    background: #50a5d6;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    color: #eee;
+    font-size:0.75rem;
+}
+
+#footer .right{
+    float: right;
+}
+
+#footer a{
+    color:#eee;
 }
