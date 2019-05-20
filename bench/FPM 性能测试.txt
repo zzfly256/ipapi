@@ -1,0 +1,46 @@
+ab -c 100 -n 100 -k "http://127.0.0.1:8001/fpm.php?ip=119.29.28.134"
+
+This is ApacheBench, Version 2.3 <$Revision: 1807734 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking 127.0.0.1 (be patient).....done
+
+
+Server Software:
+Server Hostname:        127.0.0.1
+Server Port:            8001
+
+Document Path:          /fpm.php?ip=119.29.28.134
+Document Length:        0 bytes
+
+Concurrency Level:      100
+Time taken for tests:   23.776 seconds
+Complete requests:      100
+Failed requests:        74
+   (Connect: 0, Receive: 0, Length: 74, Exceptions: 0)
+Keep-Alive requests:    0
+Total transferred:      33152 bytes
+HTML transferred:       17982 bytes
+Requests per second:    4.21 [#/sec] (mean)
+Time per request:       23775.773 [ms] (mean)
+Time per request:       237.758 [ms] (mean, across all concurrent requests)
+Transfer rate:          1.36 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        3   18   5.9     19      25
+Processing:     0 12540 8196.8  14660   23748
+Waiting:        0 12540 8197.1  14660   23748
+Total:          3 12558 8200.0  14682   23764
+
+Percentage of the requests served within a certain time (ms)
+  50%  14682
+  66%  17535
+  75%  19180
+  80%  20124
+  90%  22043
+  95%  23045
+  98%  23586
+  99%  23764
+ 100%  23764 (longest request)
