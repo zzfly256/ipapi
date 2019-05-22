@@ -26,21 +26,23 @@ class IpServer
     {
         $response->header("Content-Type", "application/json");
         $response->header("Access-Control-Allow-Origin", "*");
-        $ip = $request->get["ip"];
 
-        for ($i = 0; $i< $this->size; $i++) {
+        $ip = isset($request->get["ip"]) ? $request->get["ip"] : $request->server["remote_addr"];
+
+        for ($i = 0; $i < $this->size; $i++) {
             $info = $this->data[$i];
             if ($this->ipcmp($info[0], $ip) <= 0 && $this->ipcmp($info[1], $ip) >= 0) {
                 $result = [
                     "ip" => $ip,
                     "area" => $info[2],
                     "isp" => strcmp($info[3],"CZ88.NET") == 0 ? "" : $info[3],
-                    "ip_segment" => ($info[0] == $info[1]) ? $info[1] : [$info[0],$info[1]]
+//                    "ip_segment" => ($info[0] == $info[1]) ? $info[1] : [$info[0],$info[1]]
                 ];
                 $response->end(json_encode($result));
                 break;
             }
         }
+
     }
 
     private function ipcmp($a, $b)
